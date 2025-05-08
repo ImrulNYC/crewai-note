@@ -1,44 +1,48 @@
-# Agent-Note–Composition
+# 🧠 Agent-Note–Composition
 
 ## Description
 
-This app, hosted in Streamlit, uses CrewAI agents to structure information into easy-to-review notes. The inputs for the app are text, PDF, or DOCX files.
-
-
-
-### Information Flow
-
-- If the input is not direct text, the app extracts it from the uploaded file.
-- The extracted or pasted text is passed to a crew of AI agents.
-- The agents process the input sequentially, each performing a distinct part in preparing the final structured notes.
-
-### Agents
-
-- **Grammar Agent**: Corrects grammar and writing inconsistencies in the input.
-- **Fact-check Agent**: Validates the factual accuracy of the content.
-- **Format Agent**: Applies a selected note-taking method:
-  - Outline Method
-  - Cornell Method
-  - Boxing Method
-- **(Optional) Flashcards Agent**: Creates 5 to 15 flashcards summarizing key facts and concepts from the input text.
-
-## Technologies
-
-- **CrewAI**: Multi-agent orchestration framework
-- **Streamlit**: User interface and structured Markdown output
-- **PyPDF2**: Extracts text from PDF files
-- **docx2txt**: Extracts text from Word documents
-- **litellm**: Lightweight wrapper to call LLMs like OpenAI
-- **python-dotenv**: Loads environment variables for API key management
+**Agent-Note–Composition** is a Streamlit-based application that uses [CrewAI](https://github.com/joaomdmoura/crewai) agents to convert raw input into structured, easy-to-review notes. Users can input content via direct text, PDF, or DOCX file uploads.
 
 ---
 
-## Installing
+## 🔄 Information Flow
+
+1. If the input is a file, the app extracts text using `PyPDF2` or `docx2txt`.
+2. The extracted or pasted content is passed to a crew of AI agents.
+3. Each agent processes the input sequentially to prepare structured notes.
+
+---
+
+## 🧠 Agents
+
+- **Grammar Agent**: Corrects grammar and resolves inconsistencies in the writing.
+- **Fact-check Agent**: Validates factual accuracy using web search.
+- **Format Agent**: Applies the selected note-taking method:
+  - Outline Method  
+  - Cornell Method  
+  - Boxing Method  
+- **(Optional) Flashcards Agent**: Generates 5 to 15 flashcards summarizing key concepts and facts.
+
+---
+
+## 🧰 Technologies
+
+- **CrewAI** – Orchestrates a team of AI agents  
+- **Streamlit** – Interactive UI and Markdown rendering  
+- **PyPDF2** – Extracts text from PDF files  
+- **docx2txt** – Extracts text from Word documents  
+- **LiteLLM** – Lightweight interface to call LLMs  
+- **python-dotenv** – Manages environment variables securely  
+
+---
+
+## 🚀 Installation
 
 ### 1. Prerequisites
 
-- Python `>=3.10` and `<3.13` must be installed.
-- This project uses [`uv`](https://github.com/astral-sh/uv) for dependency and package management.
+- Python `>=3.10` and `<3.13`
+- [`uv`](https://github.com/astral-sh/uv) for environment and dependency management
 
 ### 2. Install `uv`
 
@@ -46,41 +50,24 @@ This app, hosted in Streamlit, uses CrewAI agents to structure information into 
 pip install uv
 ```
 
-### 3. Clone the Repository
-
-```bash
+###3. Clone the Repository
 git clone https://github.com/Rigo-stack/crewai-note.git
 cd crewai-note
-```
-### 4. Install Dependencies
-```bash
+###4. Install Dependencies
 uv pip install -r requirements.txt
-```
-### 5. Set Up Environment Variables
-```bash:
-OPENAI_API_KEY=your_openai_key
+###5. Set Up Environment Variables
+Create a .env file or export the following variables:
+
+```OPENAI_API_KEY=your_openai_key
 SERPER_API_KEY=your_serper_key
 ```
-
-### 6. Launch App:
-``` bash
-Streamlit run app.py
-```
----
-## Usage:
-
-Customization of Agents:
-- Modify 'agents.yaml' to define the agents
-- Modify 'tasks.yaml' to define the tasks
-- Modify 'crew.py' to add your own logic, tools, and specific args
-- Modify 'app.py' to add custom inputs for your agents and tasks
-
----
-## Contributing:
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate
+### 6. Launch the App
+streamlit run app.py
+⚙️ Usage & Customization
 
 
----
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+agents.yaml: Define the agents and their roles
+tasks.yaml: Configure the task sequence
+crew.py: Add tools, logic, and specific task parameters
+app.py: Modify input fields and Streamlit interactions
+
